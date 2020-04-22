@@ -25,9 +25,9 @@ namespace WebAPI.Controllers
         }
 
         // POST: api/Admins
-        public void Post([FromBody]Admin_list admin)
+        public void Post([FromBody]Admin_list admin_List)
         {
-            this.context.Admins.Add(admin);
+            this.context.Admins.Add(admin_List);
             this.context.SaveChanges();
         }
 
@@ -41,8 +41,6 @@ namespace WebAPI.Controllers
             current.login = admin.login;
             current.password = admin.password;
             current.gmail = admin.gmail;
-
-
 
             this.context.SaveChanges();
         }

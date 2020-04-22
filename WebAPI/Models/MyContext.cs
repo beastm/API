@@ -11,7 +11,12 @@ namespace WebAPI.Models
     public class MyContext : DbContext
     {
         public DbSet<Admin_list> Admins { get; set; }
-
+        public DbSet<Destination> Destinations { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<Klient> Klients { get; set; }
+        public DbSet<Obj> Objs { get; set; }
+        public DbSet<Report> Reports { get; set; }
+        public DbSet<Template> Templates { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
