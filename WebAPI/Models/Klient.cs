@@ -7,7 +7,7 @@ namespace WebAPI.Models
 {
     public class Klient
     {
-
+        //
         public int id { get; set; }
         public string info { get; set; }
         public string  ip { get; set; }
