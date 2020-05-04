@@ -41,6 +41,7 @@ namespace WebAPI.Controllers
             current.ip = klient.ip;
             current.mac_adr = klient.mac_adr;
             current.name = klient.name;
+            current.state = klient.state;
 
             this.context.SaveChanges();
         }
