@@ -17,7 +17,6 @@ namespace WebAPI.Controllers
         {
             return this.context.Admins;
         }
-
      
         public Admin_list Get(int id)
         {
@@ -39,7 +38,7 @@ namespace WebAPI.Controllers
             current.id = admin.id;
             current.username = admin.username;
             current.login = admin.login;
-            current.password = admin.password;
+            current.hashed_password = admin.hashed_password;
             current.gmail = admin.gmail;
 
             this.context.SaveChanges();

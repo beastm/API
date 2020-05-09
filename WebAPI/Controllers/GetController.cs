@@ -19,25 +19,20 @@ namespace WebAPI.Controllers
         {
             return from x in context.Templates
                    join job in context.Jobs on x.id equals job.id_template
-                   join obj in context.Objs on x.Obj_id equals obj.id
+                   join obj in context.Objs on x.id equals obj.id_template
                    select new Get()
                    {
                        Template_name = x.Template_name,
                        Backup_type = x.Backup_type,
                        Cronos_config = x.Cronos_config,
                        Save_format = x.Cronos_config,
-                       Destination_id = x.Destination_id,
                        Date_s = x.Date_s,
                        Date_e = x.Date_e,
-                       path = obj.path,
                        B_Limit = x.B_Limit,
                        id_client = job.id_client,
                        id_report = job.id_report,
                        id_template = job.id_template                       
-                   };
-
-                   
-
+                   };                
         }
 
         // GET: api/Get/5
@@ -54,7 +49,6 @@ namespace WebAPI.Controllers
                         Backup_type = x.Backup_type,
                         Cronos_config = x.Cronos_config,
                         Save_format = x.Cronos_config,
-                        Destination_id = x.Destination_id,
                         Date_s = x.Date_s,
                         Date_e = x.Date_e,
                         path = obj.path,
@@ -65,10 +59,29 @@ namespace WebAPI.Controllers
                     }).ToList()[0];
         }
 
-     
+
+        [HttpGet]
+        public IEnumerable<DataFromTo> GetData()
+        {
+            return from x in context.Templates
+                   join Destination in context.Destinations on x.id equals Destination.id_template
+                   join obj in context.Objs on x.id equals obj.id_template
+                   select new DataFromTo()
+                   {
+                       FTP_config = Destination.FTP_config,
+                       LD_path = Destination.LD_path,
+                       path = obj.path
+                   };
+        }
+
+
+    
+
+
         // POST: api/Get
         public void Post([FromBody]string value)
         {
+
         }
 
         // PUT: api/Get/5

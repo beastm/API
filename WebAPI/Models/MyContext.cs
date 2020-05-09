@@ -17,6 +17,9 @@ namespace WebAPI.Models
         public DbSet<Obj> Objs { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<Template> Templates { get; set; }
+        public DbSet<Token> Tokens { get; set; }
+
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

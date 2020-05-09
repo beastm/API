@@ -5,11 +5,12 @@ using System.Web;
 
 namespace WebAPI.Models
 {
-    public class Destination
+    public class DataFromTo
     {
-        public int id { get; set; }
-        public int id_template { get; set; }
         public string FTP_config { get; set; }
         public string LD_path { get; set; }
+
+        //obj
+        public string path { get; set; }
     }
 }

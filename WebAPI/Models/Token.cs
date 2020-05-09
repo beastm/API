@@ -5,10 +5,10 @@ using System.Web;
 
 namespace WebAPI.Models
 {
-    public class Obj
+    public class Token
     {
         public int id { get; set; }
-        public int id_template { get; set; }
-        public string path { get; set; }
+        public string username { get; set; }        
+        public string hash { get; set; }
     }
 }
