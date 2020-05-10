@@ -41,7 +41,7 @@ namespace WebAPI.Controllers
             return (from x in context.Templates
 
                     join job in context.Jobs on x.id equals job.id_template
-                    join obj in context.Objs on x.Obj_id equals obj.id
+                    join obj in context.Objs on x.id equals obj.id_template
                     where x.id == id
                     select new Get()
                     {
@@ -68,6 +68,8 @@ namespace WebAPI.Controllers
                    join obj in context.Objs on x.id equals obj.id_template
                    select new DataFromTo()
                    {
+                       id_dest = Destination.id,
+                       id_obj = obj.id,
                        FTP_config = Destination.FTP_config,
                        LD_path = Destination.LD_path,
                        path = obj.path

@@ -3,15 +3,28 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
+using WebAPI.Models;
+using System.Linq;
+using Microsoft.Ajax.Utilities;
 
 namespace WebAPI.Controllers
 {
     public class TokenManager
     {
-        private static string Secret = "ERMN05OPLoDvbTTa/QkqLNMI7cPLguaRyHzyg7n5qNBVjQmtBhz4SzYh4NBVCXi3KJHlSXKP+oi2+bXr6CUYTR==";
+        MyContext context = new MyContext();
+
+        static string hash;
+        public string Secret() 
+        {
+          int a = context.Admins.First().hashed_password.GetHashCode();
+
+            return hash = a.ToString();
+        }
+
+
         public static string GenerateToken(string username)
         {
-            byte[] key = Convert.FromBase64String(Secret);
+            byte[] key = Convert.FromBase64String(hash);
             SymmetricSecurityKey securityKey = new SymmetricSecurityKey(key);
             SecurityTokenDescriptor descriptor = new SecurityTokenDescriptor
             {
@@ -34,7 +47,7 @@ namespace WebAPI.Controllers
                 JwtSecurityToken jwtToken = (JwtSecurityToken)tokenHandler.ReadToken(token);
                 if (jwtToken == null)
                     return null;
-                byte[] key = Convert.FromBase64String(Secret);
+                byte[] key = Convert.FromBase64String(hash);
                 TokenValidationParameters parameters = new TokenValidationParameters()
                 {
                     RequireExpirationTime = true,

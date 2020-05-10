@@ -41,10 +41,8 @@ namespace WebAPI.Controllers
             current.Backup_type = template.Backup_type;
             current.Cronos_config = template.Cronos_config;
             current.Save_format = template.Save_format;
-            current.Destination_id = template.Destination_id;
             current.Date_s = template.Date_s;
             current.Date_e = template.Date_e;
-            current.Obj_id = template.Obj_id;
             current.B_Limit = template.B_Limit;
 
             this.context.SaveChanges();
